@@ -1,0 +1,247 @@
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact Us - Dloziville</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/appwrite@13.0.1"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet"/>
+  <style>
+    body { font-family: "Inter", sans-serif; }
+    .primary-color { color: #e10600; }
+    .primary-bg { background-color: #e10600; }
+    .btn-primary {
+      background-color: #e10600;
+      color: white;
+      transition: background-color 0.3s ease;
+    }
+    .btn-primary:hover, .btn-primary:focus {
+      background-color: #b00400;
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(225, 6, 0, 0.4);
+    }
+    .dark .primary-color { color: #f87171; }
+    .dark .primary-bg { background-color: #f87171; }
+    .dark .btn-primary {
+      background-color: #f87171;
+      color: #1a1a1a;
+    }
+    .dark .btn-primary:hover, .dark .btn-primary:focus {
+      background-color: #ef4444;
+      box-shadow: 0 0 0 3px rgba(248, 113, 113, 0.6);
+    }
+    /* Scrollbar */
+    ::-webkit-scrollbar { width: 8px; height: 8px; }
+    ::-webkit-scrollbar-track { background: #1e1e1e; }
+    ::-webkit-scrollbar-thumb {
+      background-color: #f87171;
+      border-radius: 10px;
+      border: 2px solid #1e1e1e;
+    }
+    a.icon-link i, a.icon-link svg {
+      cursor: pointer;
+      transition: color 0.3s ease, transform 0.2s ease;
+    }
+    a.icon-link:hover i, a.icon-link:hover svg {
+      color: #f87171;
+      transform: scale(1.1);
+    }
+    a:focus-visible {
+      outline: 2px solid #f87171;
+      outline-offset: 2px;
+    }
+  </style>
+</head>
+<body class="dark bg-gray-900 min-h-screen flex flex-col items-center p-6">
+
+  <!-- Navigation -->
+  <nav class="w-full max-w-5xl bg-gray-800 rounded-lg shadow-md mb-12">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex flex-col sm:flex-row items-center justify-between space-y-4 sm:space-y-0 relative">
+      <h1 class="text-3xl font-semibold primary-color">Dloziville Contact Us</h1>
+      <div class="flex space-x-4">
+        
+        <button
+          aria-label="Home"
+            class="focus:outline-none text-gray-400 hover:text-primary-color transition-colors duration-300"
+                onclick="location.href='index.html'"
+                    title="Home"
+                >
+            <i class="fas fa-home fa-lg"></i>
+        </button>
+        
+      </div>
+    </div>
+  </nav>
+
+  <main class="max-w-3xl w-full flex-grow bg-gray-800 rounded-lg shadow-md p-8 text-gray-200">
+    <section class="mb-10">
+      <h2 class="text-3xl font-semibold mb-4 primary-color text-center">Get in Touch</h2>
+      <p class="text-center text-gray-400 mb-8">We would love to hear from you! Please fill out the form below or email us directly.</p>
+      <form id="contact-form" class="space-y-6" novalidate>
+        <div>
+          <label for="name" class="block mb-2 font-semibold">Name</label>
+          <input type="text" id="name" name="name" required
+            class="w-full rounded-md border border-gray-600 bg-gray-900 px-4 py-3 text-gray-200 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary-color focus:border-primary-color" placeholder="Your full name" />
+        </div>
+        <div>
+          <label for="email" class="block mb-2 font-semibold">Email</label>
+          <input type="email" id="email" name="email" required
+            class="w-full rounded-md border border-gray-600 bg-gray-900 px-4 py-3 text-gray-200 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary-color focus:border-primary-color" placeholder="you@example.com" />
+        </div>
+        <div>
+          <label for="subject" class="block mb-2 font-semibold">Subject</label>
+          <input type="text" id="subject" name="subject" required
+            class="w-full rounded-md border border-gray-600 bg-gray-900 px-4 py-3 text-gray-200 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary-color focus:border-primary-color" placeholder="Subject of your message" />
+        </div>
+        <div>
+          <label for="message" class="block mb-2 font-semibold">Message</label>
+          <textarea id="message" name="message" rows="5" required
+            class="w-full rounded-md border border-gray-600 bg-gray-900 px-4 py-3 text-gray-200 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary-color focus:border-primary-color" placeholder="Write your message here..."></textarea>
+        </div>
+        <button type="submit" class="btn-primary w-full py-3 rounded-md font-semibold text-lg flex items-center justify-center space-x-2">
+          <i class="fas fa-paper-plane"></i><span>Send Message</span>
+        </button>
+        <p id="form-message" class="mt-4 text-center text-sm"></p>
+      </form>
+    </section>
+
+    <section class="text-center text-gray-400">
+      <p class="mb-2">Or email us directly at:</p>
+      <a href="mailto:dloziivillle.africa@gmail.com" class="text-primary-color font-semibold hover:underline break-all">dloziivillle.africa@gmail.com</a>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="w-full max-w-7xl bg-gray-800 rounded-lg shadow-inner mt-12 p-6 text-gray-300">
+
+    <div class="flex flex-col md:flex-row md:justify-between md:items-center space-y-6 md:space-y-0">
+      
+      <div class="flex space-x-6 justify-center md:justify-start items-center">
+        <a href="#" aria-label="Facebook" title="Facebook" class="icon-link hover:text-primary-color transition-colors duration-300">
+          <i class="fab fa-facebook-f text-2xl"></i>
+        </a>
+        <a href="#" aria-label="Twitter" title="Twitter" class="icon-link hover:text-primary-color transition-colors duration-300">
+          <i class="fab fa-twitter text-2xl"></i>
+        </a>
+        <a href="#" aria-label="Instagram" title="Instagram" class="icon-link hover:text-primary-color transition-colors duration-300">
+          <i class="fab fa-instagram text-2xl"></i>
+        </a>
+        <a href="#" aria-label="LinkedIn" title="LinkedIn" class="icon-link hover:text-primary-color transition-colors duration-300">
+          <i class="fab fa-linkedin-in text-2xl"></i>
+        </a>
+      </div>
+
+      <div class="flex space-x-6 justify-center md:justify-center">
+        <a href="#" class="hover:text-primary-color transition-colors duration-300 font-semibold" title="Policies">Policies</a>
+        <a href="#" class="hover:text-primary-color transition-colors duration-300 font-semibold" title="FAQs">FAQs</a>
+      </div>
+
+      <div class="text-center md:text-right text-sm">
+        Built by KatlegoThatGuy © 2025 Dloziville
+      </div>
+
+      <form class="flex flex-wrap justify-center md:justify-end space-x-0 md:space-x-2 gap-2 md:gap-0" role="search" aria-label="Site Search">
+        <label for="footer-search" class="sr-only">Search</label>
+        <input id="footer-search" type="search" placeholder="Search..."
+          class="rounded-l-md border border-gray-600 bg-gray-900 text-gray-200 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary-color focus:border-primary-color px-3 py-1 w-48" />
+        <button type="submit"
+          class="btn-primary rounded-r-md px-4 py-1 font-semibold focus:outline-none focus:ring-2 focus:ring-primary-color"
+          title="Search">
+          <i class="fas fa-search"></i>
+        </button>
+
+        <!-- Register Button -->
+        <a href="register.html" id="register-link"
+          class="btn-primary px-4 py-1 rounded-md font-semibold hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-primary-color flex items-center justify-center whitespace-nowrap"
+          title="Register">
+          Register
+        </a>
+
+        <!-- Login Button -->
+        <a href="login.html" id="login-link"
+          class="btn-primary px-4 py-1 rounded-md font-semibold hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-primary-color flex items-center justify-center whitespace-nowrap"
+          title="Login">
+          Login
+        </a>
+
+        <!-- Logout Button (only visible when logged in) -->
+        <button type="button" id="logout-button"
+          class="btn-primary px-4 py-1 rounded-md font-semibold hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-primary-color flex items-center justify-center whitespace-nowrap hidden"
+          title="Logout">
+          Logout
+        </button>
+
+      </form>
+
+    </div>
+
+  </footer>
+
+  <script>
+    const client = new Appwrite.Client()
+      .setEndpoint('https://fra.cloud.appwrite.io/v1')
+      .setProject('680b9ce400285c7afee2');
+
+    const account = new Appwrite.Account(client);
+
+    // Check if user is logged in
+    account.get()
+      .then(() => {
+        document.getElementById('logout-button').classList.remove('hidden');
+        document.getElementById('login-link').classList.add('hidden');
+        document.getElementById('register-link').classList.add('hidden');
+      })
+      .catch(() => {
+        document.getElementById('logout-button').classList.add('hidden');
+        document.getElementById('login-link').classList.remove('hidden');
+        document.getElementById('register-link').classList.remove('hidden');
+      });
+
+    // Logout handler
+    document.getElementById('logout-button')?.addEventListener('click', async () => {
+      try {
+        await account.deleteSession('current');
+        window.location.href = 'login.html';
+      } catch (err) {
+        alert('Failed to logout. Try again.');
+      }
+    });
+
+    // Contact form submission handler
+    const contactForm = document.getElementById('contact-form');
+    const formMessage = document.getElementById('form-message');
+
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      formMessage.textContent = '';
+      formMessage.classList.remove('text-red-500', 'text-green-400');
+
+      const name = contactForm.name.value.trim();
+      const email = contactForm.email.value.trim();
+      const subject = contactForm.subject.value.trim();
+      const message = contactForm.message.value.trim();
+
+      if (!name || !email || !subject || !message) {
+        formMessage.textContent = 'Please fill in all fields.';
+        formMessage.classList.add('text-red-500');
+        return;
+      }
+
+      // Basic email format validation
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        formMessage.textContent = 'Please enter a valid email address.';
+        formMessage.classList.add('text-red-500');
+        return;
+      }
+
+      // Simulate sending message (since no backend)
+      formMessage.textContent = 'Thank you for contacting us! We will get back to you shortly.';
+      formMessage.classList.add('text-green-400');
+      contactForm.reset();
+    });
+  </script>
+
+</body>
+</html>
