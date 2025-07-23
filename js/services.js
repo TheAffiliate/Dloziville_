@@ -59,6 +59,8 @@ gcForm.addEventListener('submit', async (e) => {
     gcMessage.classList.replace('text-red-500', 'text-green-400');
     gcForm.reset();
     document.getElementById('general-consultation-dropdown').classList.add('hidden');
+    // Redirect to checkout with payment details
+    window.location.href = `/checkout?amount=250.00&item_name=Consultation&email=${encodeURIComponent(email)}`;
   } catch (error) {
     console.error('Submit error:', error);
     gcMessage.textContent = 'Submission failed.';
@@ -94,6 +96,8 @@ amForm.addEventListener('submit', async (e) => {
     amMessage.classList.replace('text-red-500', 'text-green-400');
     amForm.reset();
     document.getElementById('ancestry-mapping-dropdown').classList.add('hidden');
+    // Redirect to checkout with payment details
+    window.location.href = `/checkout?amount=350.00&item_name=Ancestry%20Mapping&email=${encodeURIComponent(email)}`;
   } catch (error) {
     console.error('Submit error:', error);
     amMessage.textContent = 'Submission failed.';
