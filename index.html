@@ -59,46 +59,412 @@
 </head>
 <body class="dark bg-gray-900 min-h-screen flex flex-col items-center p-6">
 
-  <!-- Navigation -->
-  <nav class="w-full max-w-5xl bg-gray-800 rounded-lg shadow-md mb-12">
-    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between relative">
-      <h1 class="text-3xl font-semibold primary-color text-center flex-grow md:absolute md:left-1/2 md:transform md:-translate-x-1/2 md:flex md:justify-center md:w-auto">
-        Welcome to Dloziville Academy
-      </h1>
-      <div class="w-9 md:hidden"></div>
+  <!-- Persistent Navigation -->
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-gray-800 shadow-lg border-b border-gray-700">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <div class="flex items-center space-x-4">
+        <img src="https://storage.googleapis.com/a1aa/image/43fb23f2-409b-4e3a-a3ad-a9793454217f.jpg" alt="Dloziville Academy Logo" class="w-10 h-10 object-contain" />
+        <h1 class="text-2xl font-semibold primary-color">Dloziville Academy</h1>
+      </div>
+      
+      <!-- Desktop Navigation -->
+      <div class="hidden md:flex items-center space-x-6">
+        <a href="about.html" class="text-gray-300 hover:text-primary-color transition-colors duration-300">About</a>
+        <a href="projects.html" class="text-gray-300 hover:text-primary-color transition-colors duration-300">Projects</a>
+        <a href="services.html" class="text-gray-300 hover:text-primary-color transition-colors duration-300">Services</a>
+        <a href="contact.html" class="text-gray-300 hover:text-primary-color transition-colors duration-300">Contact</a>
+        <a href="clan-history.html" class="text-gray-300 hover:text-primary-color transition-colors duration-300">Clan History</a>
+      </div>
+      
+      <!-- Sign In | Register -->
+      <div class="flex items-center space-x-3">
+        <a href="login.html" class="text-gray-300 hover:text-primary-color transition-colors duration-300 font-medium">Sign In</a>
+        <span class="text-gray-500">|</span>
+        <a href="register.html" class="btn-primary px-4 py-2 rounded-md font-semibold hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-primary-color">Register</a>
+      </div>
+      
+      <!-- Mobile Menu Button -->
+      <button class="md:hidden text-gray-300 hover:text-primary-color" id="mobile-menu-btn">
+        <i class="fas fa-bars text-xl"></i>
+      </button>
+    </div>
+    
+    <!-- Mobile Menu -->
+    <div class="md:hidden hidden bg-gray-700 border-t border-gray-600" id="mobile-menu">
+      <div class="px-6 py-4 space-y-3">
+        <a href="about.html" class="block text-gray-300 hover:text-primary-color transition-colors duration-300">About</a>
+        <a href="projects.html" class="block text-gray-300 hover:text-primary-color transition-colors duration-300">Projects</a>
+        <a href="services.html" class="block text-gray-300 hover:text-primary-color transition-colors duration-300">Services</a>
+        <a href="contact.html" class="block text-gray-300 hover:text-primary-color transition-colors duration-300">Contact</a>
+        <a href="clan-history.html" class="block text-gray-300 hover:text-primary-color transition-colors duration-300">Clan History</a>
+      </div>
     </div>
   </nav>
 
-  <!-- Quick Links -->
-  <main class="max-w-5xl w-full flex-grow space-y-12">
-    <section class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
-      <a href="contact.html" class="icon-link flex flex-col items-center bg-gray-800 rounded-lg shadow-md p-6 hover:shadow-lg">
-        <i class="fas fa-envelope text-6xl primary-color mb-4"></i>
-        <span class="text-xl font-semibold text-gray-200">Contact Us</span>
-      </a>
-      <a href="about.html" class="icon-link flex flex-col items-center bg-gray-800 rounded-lg shadow-md p-6 hover:shadow-lg">
-        <i class="fas fa-info-circle text-6xl primary-color mb-4"></i>
-        <span class="text-xl font-semibold text-gray-200">About</span>
-      </a>
-      <a href="projects.html" class="icon-link flex flex-col items-center bg-gray-800 rounded-lg shadow-md p-6 hover:shadow-lg">
-        <i class="fas fa-folder-open text-6xl primary-color mb-4"></i>
-        <span class="text-xl font-semibold text-gray-200">Projects</span>
-      </a>
-      <a href="services.html" class="icon-link flex flex-col items-center bg-gray-800 rounded-lg shadow-md p-6 hover:shadow-lg">
-        <i class="fas fa-cogs text-6xl primary-color mb-4"></i>
-        <span class="text-xl font-semibold text-gray-200">Services</span>
-      </a>
-    </section>
+  <!-- Welcome Banner Section -->
+  <div class="w-full max-w-5xl bg-gray-800 rounded-lg shadow-md mb-12 mt-20">
+    <div class="max-w-7xl mx-auto px-6 py-8 text-center">
+      <h2 class="text-4xl font-bold primary-color mb-4">Welcome to Dloziville Academy</h2>
+      <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+        Educating the community on their past, heritage, and potential to be everything 
+        that their Ancestors were unable to be through traditional education and holistic learning.
+      </p>
+    </div>
+  </div>
 
-    <!-- 🔒 Logged-in Content Only -->
-    <div id="auth-only-content" class="hidden space-y-12">
-      <!-- Reading Material -->
-      <section class="bg-gray-800 rounded-lg shadow-md p-6 text-gray-200">
-        <h2 class="text-2xl font-semibold mb-4 primary-color">Reading Material</h2>
-        <div id="reading-list" class="space-y-2 max-w-md">
-          <p class="italic text-gray-400">No reading materials available.</p>
+      <!-- Student Portal Section -->
+    <main class="max-w-5xl w-full flex-grow space-y-12">
+      <section class="bg-gray-800 rounded-lg shadow-md p-8 text-gray-200">
+        <div class="text-center mb-8">
+          <i class="fas fa-graduation-cap text-6xl primary-color mb-4"></i>
+          <h3 class="text-3xl font-semibold primary-color mb-4">Student Portal Sign In</h3>
+          <p class="text-lg text-gray-300 mb-6 max-w-2xl mx-auto">
+            Sign in to view reading material and assignments. Access your personalized learning dashboard, 
+            track your progress, and engage with our comprehensive educational resources.
+          </p>
+          <div class="space-y-4">
+            <a href="login.html" class="btn-primary px-8 py-3 rounded-md font-semibold inline-flex items-center text-lg hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-primary-color">
+              <i class="fas fa-sign-in-alt mr-3"></i>
+              Access Student Portal
+            </a>
+            <p class="text-sm text-gray-400">
+              New student? <a href="register.html" class="text-primary-color hover:underline">Register here</a> to join our academy.
+            </p>
+          </div>
         </div>
       </section>
+
+      <!-- Quick Links -->
+      <section class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+        <a href="contact.html" class="icon-link flex flex-col items-center bg-gray-800 rounded-lg shadow-md p-6 hover:shadow-lg">
+          <i class="fas fa-envelope text-6xl primary-color mb-4"></i>
+          <span class="text-xl font-semibold text-gray-200">Contact Us</span>
+        </a>
+        <a href="about.html" class="icon-link flex flex-col items-center bg-gray-800 rounded-lg shadow-md p-6 hover:shadow-lg">
+          <i class="fas fa-info-circle text-6xl primary-color mb-4"></i>
+          <span class="text-xl font-semibold text-gray-200">About</span>
+        </a>
+        <a href="projects.html" class="icon-link flex flex-col items-center bg-gray-800 rounded-lg shadow-md p-6 hover:shadow-lg">
+          <i class="fas fa-folder-open text-6xl primary-color mb-4"></i>
+          <span class="text-xl font-semibold text-gray-200">Projects</span>
+        </a>
+        <a href="services.html" class="icon-link flex flex-col items-center bg-gray-800 rounded-lg shadow-md p-6 hover:shadow-lg">
+          <i class="fas fa-cogs text-6xl primary-color mb-4"></i>
+          <span class="text-xl font-semibold text-gray-200">Services</span>
+        </a>
+      </section>
+
+          <!-- Reading Material Section -->
+      <section class="bg-gray-800 rounded-lg shadow-md p-8 text-gray-200">
+        <h2 class="text-3xl font-semibold mb-6 primary-color flex items-center">
+          <i class="fas fa-book text-3xl mr-3"></i>
+          Reading Material
+        </h2>
+        <p class="text-lg text-gray-300 mb-8">
+          Explore our curated collection of educational resources, historical documents, and cultural materials.
+        </p>
+        
+        <!-- Current Titles -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="bg-gray-700 rounded-lg p-6 hover:bg-gray-600 transition-colors cursor-pointer" onclick="promptRegistration('African Heritage and Identity')">
+            <div class="flex items-center mb-3">
+              <i class="fas fa-book-open text-2xl primary-color mr-3"></i>
+              <h3 class="text-xl font-semibold">African Heritage and Identity</h3>
+            </div>
+            <p class="text-gray-300 text-sm mb-4">
+              Comprehensive guide to understanding African cultural identity and ancestral connections.
+            </p>
+            <div class="flex items-center justify-between">
+              <span class="text-xs text-gray-400">Cultural Studies</span>
+              <i class="fas fa-lock text-primary-color"></i>
+            </div>
+          </div>
+          
+          <div class="bg-gray-700 rounded-lg p-6 hover:bg-gray-600 transition-colors cursor-pointer" onclick="promptRegistration('Traditional Medicine Practices')">
+            <div class="flex items-center mb-3">
+              <i class="fas fa-leaf text-2xl primary-color mr-3"></i>
+              <h3 class="text-xl font-semibold">Traditional Medicine Practices</h3>
+            </div>
+            <p class="text-gray-300 text-sm mb-4">
+              Ancient healing methods and natural remedies aligned with African laws of nature.
+            </p>
+            <div class="flex items-center justify-between">
+              <span class="text-xs text-gray-400">Health & Wellness</span>
+              <i class="fas fa-lock text-primary-color"></i>
+            </div>
+          </div>
+          
+          <div class="bg-gray-700 rounded-lg p-6 hover:bg-gray-600 transition-colors cursor-pointer" onclick="promptRegistration('Clan Histories and Genealogy')">
+            <div class="flex items-center mb-3">
+              <i class="fas fa-tree text-2xl primary-color mr-3"></i>
+              <h3 class="text-xl font-semibold">Clan Histories and Genealogy</h3>
+            </div>
+            <p class="text-gray-300 text-sm mb-4">
+              Detailed research on clan origins, praises, and ancestral lineages across South Africa.
+            </p>
+            <div class="flex items-center justify-between">
+              <span class="text-xs text-gray-400">Genealogy</span>
+              <i class="fas fa-lock text-primary-color"></i>
+            </div>
+          </div>
+          
+          <div class="bg-gray-700 rounded-lg p-6 hover:bg-gray-600 transition-colors cursor-pointer" onclick="promptRegistration('Holistic Learning Methods')">
+            <div class="flex items-center mb-3">
+              <i class="fas fa-brain text-2xl primary-color mr-3"></i>
+              <h3 class="text-xl font-semibold">Holistic Learning Methods</h3>
+            </div>
+            <p class="text-gray-300 text-sm mb-4">
+              Creative learning approaches that make education fun and engaging as practiced by ancestors.
+            </p>
+            <div class="flex items-center justify-between">
+              <span class="text-xs text-gray-400">Education</span>
+              <i class="fas fa-lock text-primary-color"></i>
+            </div>
+          </div>
+          
+          <div class="bg-gray-700 rounded-lg p-6 hover:bg-gray-600 transition-colors cursor-pointer" onclick="promptRegistration('Community Development')">
+            <div class="flex items-center mb-3">
+              <i class="fas fa-users text-2xl primary-color mr-3"></i>
+              <h3 class="text-xl font-semibold">Community Development</h3>
+            </div>
+            <p class="text-gray-300 text-sm mb-4">
+              Strategies for building stronger communities through education, culture, and mutual support.
+            </p>
+            <div class="flex items-center justify-between">
+              <span class="text-xs text-gray-400">Social Studies</span>
+              <i class="fas fa-lock text-primary-color"></i>
+            </div>
+          </div>
+          
+          <div class="bg-gray-700 rounded-lg p-6 hover:bg-gray-600 transition-colors cursor-pointer" onclick="promptRegistration('Environmental Stewardship')">
+            <div class="flex items-center mb-3">
+              <i class="fas fa-seedling text-2xl primary-color mr-3"></i>
+              <h3 class="text-xl font-semibold">Environmental Stewardship</h3>
+            </div>
+            <p class="text-gray-300 text-sm mb-4">
+              Traditional ecological knowledge and sustainable practices for environmental management.
+            </p>
+            <div class="flex items-center justify-between">
+              <span class="text-xs text-gray-400">Environment</span>
+              <i class="fas fa-lock text-primary-color"></i>
+            </div>
+          </div>
+        </div>
+        
+        <div class="mt-8 text-center">
+          <p class="text-gray-400 mb-4">
+            <i class="fas fa-info-circle mr-2"></i>
+            All reading materials require academy registration to access.
+          </p>
+          <a href="register.html" class="btn-primary px-6 py-3 rounded-md font-semibold inline-flex items-center hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-primary-color">
+            <i class="fas fa-user-plus mr-2"></i>
+            Register to Access Resources
+          </a>
+        </div>
+      </section>
+
+      <!-- Upcoming Events Section -->
+      <section class="bg-gray-800 rounded-lg shadow-md p-8 text-gray-200">
+        <h2 class="text-3xl font-semibold mb-6 primary-color flex items-center">
+          <i class="fas fa-calendar-alt text-3xl mr-3"></i>
+          Upcoming Events
+        </h2>
+        <p class="text-lg text-gray-300 mb-8">
+          Join us for educational workshops, cultural celebrations, and community gatherings.
+        </p>
+        
+        <!-- Event Tiles -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="bg-gray-700 rounded-lg p-6 hover:bg-gray-600 transition-colors cursor-pointer" onclick="promptRegistration('Traditional Medicine Workshop')">
+            <div class="flex items-center justify-between mb-3">
+              <i class="fas fa-leaf text-2xl primary-color"></i>
+              <span class="text-sm text-gray-400">March 15, 2025</span>
+            </div>
+            <h3 class="text-xl font-semibold mb-3">Traditional Medicine Workshop</h3>
+            <p class="text-gray-300 text-sm mb-4">
+              Learn about indigenous healing practices and natural remedies. Hands-on preparation of traditional medicines with expert guidance.
+            </p>
+            <div class="flex items-center justify-between">
+              <span class="text-xs bg-primary-color text-white px-2 py-1 rounded">Workshop</span>
+              <span class="text-xs text-gray-400">10:00 AM - 4:00 PM</span>
+            </div>
+          </div>
+          
+          <div class="bg-gray-700 rounded-lg p-6 hover:bg-gray-600 transition-colors cursor-pointer" onclick="promptRegistration('Clan Heritage Seminar')">
+            <div class="flex items-center justify-between mb-3">
+              <i class="fas fa-crown text-2xl primary-color"></i>
+              <span class="text-sm text-gray-400">March 22, 2025</span>
+            </div>
+            <h3 class="text-xl font-semibold mb-3">Clan Heritage Seminar</h3>
+            <p class="text-gray-300 text-sm mb-4">
+              Explore your ancestral roots and learn research methods for tracing clan histories. Interactive genealogy session included.
+            </p>
+            <div class="flex items-center justify-between">
+              <span class="text-xs bg-primary-color text-white px-2 py-1 rounded">Seminar</span>
+              <span class="text-xs text-gray-400">2:00 PM - 6:00 PM</span>
+            </div>
+          </div>
+          
+          <div class="bg-gray-700 rounded-lg p-6 hover:bg-gray-600 transition-colors cursor-pointer" onclick="promptRegistration('Community Celebration')">
+            <div class="flex items-center justify-between mb-3">
+              <i class="fas fa-drum text-2xl primary-color"></i>
+              <span class="text-sm text-gray-400">April 5, 2025</span>
+            </div>
+            <h3 class="text-xl font-semibold mb-3">Community Celebration</h3>
+            <p class="text-gray-300 text-sm mb-4">
+              Cultural celebration featuring traditional music, storytelling, and community feast. Family-friendly event for all ages.
+            </p>
+            <div class="flex items-center justify-between">
+              <span class="text-xs bg-primary-color text-white px-2 py-1 rounded">Cultural Event</span>
+              <span class="text-xs text-gray-400">11:00 AM - 7:00 PM</span>
+            </div>
+          </div>
+          
+          <div class="bg-gray-700 rounded-lg p-6 hover:bg-gray-600 transition-colors cursor-pointer" onclick="promptRegistration('Environmental Restoration')">
+            <div class="flex items-center justify-between mb-3">
+              <i class="fas fa-seedling text-2xl primary-color"></i>
+              <span class="text-sm text-gray-400">April 12, 2025</span>
+            </div>
+            <h3 class="text-xl font-semibold mb-3">Environmental Restoration Project</h3>
+            <p class="text-gray-300 text-sm mb-4">
+              Hands-on land restoration workshop focusing on traditional ecological practices and sustainable farming methods.
+            </p>
+            <div class="flex items-center justify-between">
+              <span class="text-xs bg-primary-color text-white px-2 py-1 rounded">Field Trip</span>
+              <span class="text-xs text-gray-400">8:00 AM - 5:00 PM</span>
+            </div>
+          </div>
+          
+          <div class="bg-gray-700 rounded-lg p-6 hover:bg-gray-600 transition-colors cursor-pointer" onclick="promptRegistration('Youth Leadership Forum')">
+            <div class="flex items-center justify-between mb-3">
+              <i class="fas fa-users text-2xl primary-color"></i>
+              <span class="text-sm text-gray-400">April 19, 2025</span>
+            </div>
+            <h3 class="text-xl font-semibold mb-3">Youth Leadership Forum</h3>
+            <p class="text-gray-300 text-sm mb-4">
+              Empowering young leaders through workshops on community development, cultural preservation, and social responsibility.
+            </p>
+            <div class="flex items-center justify-between">
+              <span class="text-xs bg-primary-color text-white px-2 py-1 rounded">Forum</span>
+              <span class="text-xs text-gray-400">9:00 AM - 3:00 PM</span>
+            </div>
+          </div>
+          
+          <div class="bg-gray-700 rounded-lg p-6 hover:bg-gray-600 transition-colors cursor-pointer" onclick="promptRegistration('Holistic Health Fair')">
+            <div class="flex items-center justify-between mb-3">
+              <i class="fas fa-heart text-2xl primary-color"></i>
+              <span class="text-sm text-gray-400">April 26, 2025</span>
+            </div>
+            <h3 class="text-xl font-semibold mb-3">Holistic Health Fair</h3>
+            <p class="text-gray-300 text-sm mb-4">
+              Comprehensive health and wellness fair featuring traditional healers, organic food vendors, and wellness workshops.
+            </p>
+            <div class="flex items-center justify-between">
+              <span class="text-xs bg-primary-color text-white px-2 py-1 rounded">Health Fair</span>
+              <span class="text-xs text-gray-400">10:00 AM - 6:00 PM</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="mt-8 text-center">
+          <p class="text-gray-400 mb-4">
+            <i class="fas fa-ticket-alt mr-2"></i>
+            Event participation requires academy registration.
+          </p>
+          <a href="register.html" class="btn-primary px-6 py-3 rounded-md font-semibold inline-flex items-center hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-primary-color">
+            <i class="fas fa-calendar-plus mr-2"></i>
+            Register to Join Events
+          </a>
+        </div>
+      </section>
+
+      <!-- Previous Events Section -->
+      <section class="bg-gray-800 rounded-lg shadow-md p-8 text-gray-200">
+        <h2 class="text-3xl font-semibold mb-6 primary-color flex items-center">
+          <i class="fas fa-history text-3xl mr-3"></i>
+          Previous Events
+        </h2>
+        <p class="text-lg text-gray-300 mb-8">
+          Missed an event? Purchase access to recordings and materials from our past classes and workshops.
+        </p>
+        
+        <!-- Previous Event Tiles -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="bg-gray-700 rounded-lg p-6 border border-gray-600">
+            <div class="flex items-center justify-between mb-3">
+              <i class="fas fa-book text-2xl primary-color"></i>
+              <span class="text-sm text-gray-400">February 2025</span>
+            </div>
+            <h3 class="text-xl font-semibold mb-3">Introduction to African Philosophy</h3>
+            <p class="text-gray-300 text-sm mb-4">
+              Comprehensive overview of African philosophical traditions and their relevance to modern life. Includes notes and reading materials.
+            </p>
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-xs bg-gray-600 text-gray-300 px-2 py-1 rounded">Recording Available</span>
+              <span class="text-lg font-bold text-primary-color">R199</span>
+            </div>
+            <button onclick="purchaseEvent('African Philosophy')" class="w-full btn-primary py-2 rounded-md font-semibold hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-primary-color">
+              Purchase Access
+            </button>
+          </div>
+          
+          <div class="bg-gray-700 rounded-lg p-6 border border-gray-600">
+            <div class="flex items-center justify-between mb-3">
+              <i class="fas fa-mortar-pestle text-2xl primary-color"></i>
+              <span class="text-sm text-gray-400">January 2025</span>
+            </div>
+            <h3 class="text-xl font-semibold mb-3">Traditional Healing Methods</h3>
+            <p class="text-gray-300 text-sm mb-4">
+              Deep dive into indigenous healing practices, plant medicine, and holistic health approaches. Complete workshop materials included.
+            </p>
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-xs bg-gray-600 text-gray-300 px-2 py-1 rounded">Recording Available</span>
+              <span class="text-lg font-bold text-primary-color">R199</span>
+            </div>
+            <button onclick="purchaseEvent('Traditional Healing')" class="w-full btn-primary py-2 rounded-md font-semibold hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-primary-color">
+              Purchase Access
+            </button>
+          </div>
+          
+          <div class="bg-gray-700 rounded-lg p-6 border border-gray-600">
+            <div class="flex items-center justify-between mb-3">
+              <i class="fas fa-map text-2xl primary-color"></i>
+              <span class="text-sm text-gray-400">December 2024</span>
+            </div>
+            <h3 class="text-xl font-semibold mb-3">Genealogy Research Methods</h3>
+            <p class="text-gray-300 text-sm mb-4">
+              Learn professional techniques for tracing family histories and documenting clan heritage. Includes research templates and guides.
+            </p>
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-xs bg-gray-600 text-gray-300 px-2 py-1 rounded">Recording Available</span>
+              <span class="text-lg font-bold text-primary-color">R199</span>
+            </div>
+            <button onclick="purchaseEvent('Genealogy Research')" class="w-full btn-primary py-2 rounded-md font-semibold hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-primary-color">
+              Purchase Access
+            </button>
+          </div>
+        </div>
+        
+        <div class="mt-8 text-center">
+          <p class="text-gray-400 mb-4">
+            <i class="fas fa-info-circle mr-2"></i>
+            All previous events include recordings, notes, and supplementary materials.
+          </p>
+          <p class="text-sm text-gray-500">
+            Future: Audio summaries will be available for enhanced learning experience.
+          </p>
+        </div>
+      </section>
+
+      <!-- 🔒 Logged-in Content Only -->
+      <div id="auth-only-content" class="hidden space-y-12">
+        <!-- Reading Material Dashboard (for logged-in users) -->
+        <section class="bg-gray-800 rounded-lg shadow-md p-6 text-gray-200">
+          <h2 class="text-2xl font-semibold mb-4 primary-color">My Reading Materials</h2>
+          <div id="reading-list" class="space-y-2 max-w-md">
+            <p class="italic text-gray-400">No reading materials available. Please contact administrator.</p>
+          </div>
+        </section>
 
       <!-- Assignments Upload -->
       <section class="bg-gray-800 rounded-lg shadow-md p-6 text-gray-200">
@@ -192,6 +558,40 @@
 
   <!-- Scripts -->
   <script src="js/index.js"></script>
+  <script>
+    // Mobile menu functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+      const mobileMenu = document.getElementById('mobile-menu');
+      
+      if (mobileMenuBtn && mobileMenu) {
+        mobileMenuBtn.addEventListener('click', function() {
+          mobileMenu.classList.toggle('hidden');
+          const icon = mobileMenuBtn.querySelector('i');
+          if (mobileMenu.classList.contains('hidden')) {
+            icon.className = 'fas fa-bars text-xl';
+          } else {
+            icon.className = 'fas fa-times text-xl';
+          }
+        });
+      }
+    });
+
+    // Registration prompt for reading materials and events
+    function promptRegistration(itemName) {
+      if (confirm(`To access "${itemName}", you need to register for Dloziville Academy. Would you like to register now?`)) {
+        window.location.href = 'register.html';
+      }
+    }
+
+    // Purchase event function
+    function purchaseEvent(eventName) {
+      if (confirm(`Purchase access to "${eventName}" for R199? You'll be redirected to the payment page.`)) {
+        // Future: Redirect to payment processing
+        alert('Payment integration coming soon. Please contact us directly to purchase event access.');
+      }
+    }
+  </script>
 
 </body>
 </html>
