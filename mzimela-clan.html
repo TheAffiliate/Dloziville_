@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mzimela Clan History and Praises - Dloziville</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet"/>
+  <style>
+    body { font-family: "Inter", sans-serif; }
+    .primary-color { color: #e10600; }
+    .primary-bg { background-color: #e10600; }
+    .btn-primary {
+      background-color: #e10600;
+      color: white;
+      transition: background-color 0.3s ease;
+    }
+    .btn-primary:hover, .btn-primary:focus {
+      background-color: #b00400;
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(225, 6, 0, 0.4);
+    }
+    .dark .primary-color { color: #f87171; }
+    .dark .primary-bg { background-color: #f87171; }
+    .dark .btn-primary {
+      background-color: #f87171;
+      color: #1a1a1a;
+    }
+    .dark .btn-primary:hover, .dark .btn-primary:focus {
+      background-color: #ef4444;
+      box-shadow: 0 0 0 3px rgba(248, 113, 113, 0.6);
+    }
+    ::-webkit-scrollbar { width: 8px; height: 8px; }
+    .isizulu-text { font-style: italic; line-height: 1.8; }
+    .historical-text { line-height: 1.7; }
+  </style>
+</head>
+<body class="dark bg-gray-900 min-h-screen flex flex-col items-center p-6">
+
+  <!-- Navigation -->
+  <nav class="w-full max-w-5xl bg-gray-800 rounded-lg shadow-md mb-12">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex flex-col sm:flex-row items-center justify-between space-y-4 sm:space-y-0 relative">
+      <h1 class="text-3xl font-semibold primary-color">Mzimela Clan</h1>
+      <div class="flex space-x-4">
+        <button aria-label="Back to Clan History" class="focus:outline-none text-gray-400 hover:text-primary-color transition-colors duration-300" onclick="location.href='clan-history.html'" title="Back to Clan History">
+          <i class="fas fa-arrow-left fa-lg"></i>
+        </button>
+        <button aria-label="Home" class="focus:outline-none text-gray-400 hover:text-primary-color transition-colors duration-300" onclick="location.href='index.html'" title="Home">
+          <i class="fas fa-home fa-lg"></i>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="max-w-5xl w-full flex-grow space-y-12">
+    
+    <!-- Clan Overview -->
+    <section class="bg-gray-800 rounded-lg shadow-md p-8 text-gray-200">
+      <div class="flex items-center justify-center mb-6">
+        <i class="fas fa-shield-alt text-4xl primary-color mr-4"></i>
+        <h2 class="text-4xl font-semibold primary-color text-center">Mzimela Clan</h2>
+      </div>
+      <p class="text-lg leading-relaxed text-center mb-8 text-gray-300">
+        The Mzimela clan is a distinguished Zulu clan with a rich heritage rooted in the history of KwaZulu-Natal. 
+        Discover their ancestral praises and the historical narrative that shapes their identity.
+      </p>
+    </section>
+
+    <!-- Praises Section -->
+    <section class="bg-gray-800 rounded-lg shadow-md p-8 text-gray-200">
+      <h2 class="text-3xl font-semibold mb-6 primary-color flex items-center">
+        <i class="fas fa-microphone-alt mr-3"></i>
+        Praises / Izithakazelo
+      </h2>
+      <div class="bg-gray-700 p-6 rounded-lg">
+        <div class="isizulu-text text-lg space-y-2">
+          <p>Mzimela!</p>
+          <p>Mnguni!</p>
+          <p>Lwandle olungawelwa</p>
+          <p>Luwelwa zinkonjane zona ezindizela phezulu</p>
+          <p>Mahlab' angadli</p>
+          <p>Ngoba udl' umkhonto</p>
+          <p>Mwelase!</p>
+          <p>Ongaweli ngezibuko!</p>
+          <p>Owela ngempambuse zomfula</p>
+          <p>Umaginind' umuntu ngomkhonto</p>
+          <p>UDlubu lwahlutshwa ekhasini</p>
+          <p>Gumede!</p>
+          <p>Mbizeni!</p>
+          <p>Ntaka!</p>
+          <p>Sheleza!</p>
+          <p>Mzungwanya,</p>
+          <p>Dimbani;</p>
+          <p>Donda kaMlimandlela</p>
+          <p>Mfuyi wamatshe,</p>
+          <p>Mnguni !</p>
+          <p>Mfeka</p>
+          <p>Abasab' amacokana</p>
+          <p>Nzungane kaMagxega</p>
+          <p>KaNtonga yethusi.</p>
+          <p>Lwazi,</p>
+          <p>Maconi</p>
+          <p>AbaZimela ngentonga yethusi</p>
+          <p>Abafokazana bezimelelela ngomhlanga</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- History Section -->
+    <section class="bg-gray-800 rounded-lg shadow-md p-8 text-gray-200">
+      <h2 class="text-3xl font-semibold mb-6 primary-color flex items-center">
+        <i class="fas fa-scroll mr-3"></i>
+        History / Umlando
+      </h2>
+      <div class="historical-text space-y-6">
+        <p class="text-lg leading-relaxed">
+          Abantu bakwaMzimela bebakhe enyakatho nomfula iMfolozi, lapho babakhelene nesizwe samaThonga. Ngaleso sikhathi babeholwa nguKhonjwayo kaNtambo kaNjazi. Kuthi ngesikhathi esifanayo kuna bakwaMthethwa bebuswa inkosi uDingiswayo, nangapha kwabo kukhona abakwaNdwandwe bebuswa yinkosi uZwide. UKhonjwayo wakhe eZinkuhlwini bude buduze neNcebeni uma udlula intaba iNkweyana ubheke ngasolwandle eningizimu neMpumalanga yelokishi lakwaMsani eMtubatuba.
+        </p>
+        
+        <p class="text-lg leading-relaxed">
+          UKhonjwayo lona kaNtamo wake wahlaselwa nguDlabela wakwaMthiyane nabaseMagengeni ngoba babakhelene namaThonga. Loku kwenza ukuthi abanye baseMazimeleni bazihlanganise noZwangendaba wakwaMncwango, kuthi ngesikhathi belibhekisa enhla nezwe babebalekela inkosi uShaka owayebusa KwaZulu ngalesosikhathi. USihubele kaGabadele kaNjingili wazinikela embusweni wenkosi uShaka.
+        </p>
+        
+        <p class="text-lg leading-relaxed">
+          UNjili wayesakhe laphaya ngasemfuleni iVuna kwaNongoma. Wase esezala inkosana yakhe uSigodo yena owazala inkosi uZimema owazala inkosi, yena wazala uNtshidi naye owaba inkosi. Kuthiwa basuka eVuna bayozinza eMthunzini ngasoNgoye. Lapho abakwaMzimela betholakala khona namanje. Inkosi uNtshidi waduma kakhulu ngobuqhawe bakhe futhi aziwa nangokuthi uyingwazi nanokulwa kwakhe izimpi eziningi kubalwa neyaseSandlwana.
+        </p>
+        
+        <p class="text-lg leading-relaxed">
+          Kwathi emva kwayo, kanye nalempi yasoCwecweni lapho sekubanjwe khona isilo sasOndini, bahamba naso sasiwa e-Oden Moullen eKapa, kwathiwa bonke abanumzane abebethembekile eSilweni sasOndini baphoqeleka ukuba babe ngaphansi kolawulo lamaNgisi. Naye uNtshidi waba ngaphansi kwalawo makhosi abe eselawulwa ngumthetho owawushaywa yibo abelungu. Amakhosi ayeselilahlile ithemba ngokubuya kweSilo, ecabanga ukuthi sesiyokhothamela ezizweni.
+        </p>
+        
+        <p class="text-lg leading-relaxed">
+          Enye yezinto eyenza abantu bakwaMzimela babe ngabantu abakhulu nabahlonishwayo emlandweni wakwaZulu ukuthi, babebheke uMntwana wesilo sakwaNodwengu lowo okungumntwana uMgidlana njengoba nethuna lakhe lisendaweni yabo amaZimela. Kuthi umuzi womntwana uMgidlana waseNtshiweni ubekhona nawo kwaMzimela, kanjalo noGqwashaza kaMaphuthwana wakwaVundla wayebheke umntwana uMgidlana.
+        </p>
+        
+        <p class="text-lg leading-relaxed">
+          UNdlunkulu uNomvimbi okaMsweli wayezalwa khona kwaMzimela. UMsweli wayengeyona inkosi kwaMzimela kodwa wayengumnumzane owayeyiqhawe evelele futhi. Undlunkulu okaMsweli wabe esezala iSilo sasOsuthu uDinuzulu. UNdunankulu okaMsweli wayegane iSilo sasoNdini uCetshwayo. Okudabukisayo ukuthi uye futhi uMsweli owasala empini yaseNdondakusuka kulwa abaNtwana beSilo sakwaNodwengu uMntwana uCetshwayo noMntwana uMbuyazwe. Kwathi uma uSuthu selunqobile, lase lathumba izinkomo nezintombi lapho.
+        </p>
+        
+        <p class="text-lg leading-relaxed">
+          Kwakunomuzi wesilo sasOndini eDlalangubo okwakuthiwa kusOndini olubomvana nolapho uMntwana waso uDinuzulu wazalwa khona. Elinye igama likaDinuzulu ayaziwa ngalo esakhula kwabe kunguMahelana aliqanjwa iSilo ngoba sithi sibahela ngenhlanhla yaso esasihlala siyiphethe.
+        </p>
+        
+        <p class="text-lg leading-relaxed">
+          ISilo uCetshwayo samsusa uNdlunkulu kuMsweli oNdini sayombeka esigodlweni sakwaGqikazi. Kwathi lapho eya kuleso sigodlo, undlunkulu okaMsweli wayehamba noMholo wakhona kaMzimela iqhawe lesilo sasOndini, uNobiyana laphaya esigodlweni sakwaGqikiza. UMholo wayeNotwayiba kaKhwani kaMlaba wakwaNdwandwe kanye noMpambana kaMadwala waseBathenjini lolu okunguzalo lukaMadwala olulaphaya eMangomhlophe kwaNongoma. Undlunkulu weSilo sasOndini okaMadwala wayezalwa uMpambana. KwaDlangezwa abantu bakwaMzimela bakhelene nabantu bakwaMkhwanazi.
+        </p>
+      </div>
+    </section>
+
+    <!-- Cultural Significance -->
+    <section class="bg-gray-800 rounded-lg shadow-md p-8 text-gray-200">
+      <h2 class="text-3xl font-semibold mb-6 primary-color flex items-center">
+        <i class="fas fa-gem mr-3"></i>
+        Cultural Significance
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="bg-gray-700 p-6 rounded-lg">
+          <h3 class="text-xl font-semibold mb-4 primary-color">Royal Connections</h3>
+          <p class="text-gray-300">
+            The Mzimela clan holds a distinguished position in Zulu royal history, with direct connections to the Zulu monarchy and significant roles in major historical events.
+          </p>
+        </div>
+        <div class="bg-gray-700 p-6 rounded-lg">
+          <h3 class="text-xl font-semibold mb-4 primary-color">Geographic Heritage</h3>
+          <p class="text-gray-300">
+            Traditionally located north of the Mfolozi River, the clan's territory includes significant historical and cultural landmarks in KwaZulu-Natal.
+          </p>
+        </div>
+        <div class="bg-gray-700 p-6 rounded-lg">
+          <h3 class="text-xl font-semibold mb-4 primary-color">Military Heritage</h3>
+          <p class="text-gray-300">
+            Known for their warrior tradition, particularly during the time of Chief Ntshidi, who was renowned for his bravery and military prowess.
+          </p>
+        </div>
+        <div class="bg-gray-700 p-6 rounded-lg">
+          <h3 class="text-xl font-semibold mb-4 primary-color">Modern Legacy</h3>
+          <p class="text-gray-300">
+            The clan continues to maintain its cultural identity and traditions while adapting to contemporary South African society.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Call-to-Action -->
+    <section class="bg-gray-800 rounded-lg shadow-md p-8 text-gray-200 text-center">
+      <h3 class="text-2xl font-semibold mb-4 primary-color">Research Your Own Clan History</h3>
+      <p class="mb-6 text-gray-300">
+        Interested in learning more about your own clan's history and praises? We offer comprehensive ancestry research services.
+      </p>
+      <a href="services.html#ancestry-mapping" class="btn-primary px-6 py-3 rounded-md font-semibold inline-flex items-center">
+        <i class="fas fa-search mr-2"></i>
+        Request Ancestry Research
+      </a>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="w-full max-w-7xl bg-gray-800 rounded-lg shadow-inner mt-12 p-6 text-gray-300">
+    <div class="flex flex-col md:flex-row md:justify-between md:items-center space-y-6 md:space-y-0">
+      <div class="flex space-x-6 justify-center md:justify-start items-center">
+        <a href="#" aria-label="Facebook" title="Facebook" class="icon-link hover:text-primary-color transition-colors duration-300">
+          <i class="fab fa-facebook-f text-2xl"></i>
+        </a>
+        <a href="#" aria-label="Twitter" title="Twitter" class="icon-link hover:text-primary-color transition-colors duration-300">
+          <i class="fab fa-twitter text-2xl"></i>
+        </a>
+        <a href="#" aria-label="Instagram" title="Instagram" class="icon-link hover:text-primary-color transition-colors duration-300">
+          <i class="fab fa-instagram text-2xl"></i>
+        </a>
+        <a href="#" aria-label="LinkedIn" title="LinkedIn" class="icon-link hover:text-primary-color transition-colors duration-300">
+          <i class="fab fa-linkedin-in text-2xl"></i>
+        </a>
+      </div>
+      <div class="flex space-x-6 justify-center md:justify-center">
+        <a href="#" class="hover:text-primary-color transition-colors duration-300 font-semibold" title="Policies">Policies</a>
+        <a href="#" class="hover:text-primary-color transition-colors duration-300 font-semibold" title="FAQs">FAQs</a>
+      </div>
+      <div class="text-center md:text-right text-sm">
+        Built by KatlegoThatGuy © 2025 Dloziville
+      </div>
+      <form class="flex flex-wrap justify-center md:justify-end space-x-0 md:space-x-2 gap-2 md:gap-0" role="search" aria-label="Site Search">
+        <label for="footer-search" class="sr-only">Search</label>
+        <input id="footer-search" type="search" placeholder="Search..." class="rounded-l-md border border-gray-600 bg-gray-900 text-gray-200 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary-color focus:border-primary-color px-3 py-1 w-48" />
+        <button type="submit" class="btn-primary rounded-r-md px-4 py-1 font-semibold focus:outline-none focus:ring-2 focus:ring-primary-color" title="Search">
+          <i class="fas fa-search"></i>
+        </button>
+        <a href="register.html" id="footer-register-btn" class="btn-primary px-4 py-1 rounded-md font-semibold hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-primary-color flex items-center justify-center whitespace-nowrap" title="Register">
+          Register
+        </a>
+        <a href="login.html" id="footer-login-btn" class="btn-primary px-4 py-1 rounded-md font-semibold hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-primary-color flex items-center justify-center whitespace-nowrap" title="Login">
+          Login
+        </a>
+        <button id="footer-logout-btn" class="btn-primary px-4 py-1 rounded-md font-semibold hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-primary-color flex items-center justify-center whitespace-nowrap hidden" title="Logout">
+          Logout
+        </button>
+      </form>
+    </div>
+  </footer>
+
+</body>
+</html>
