@@ -1,16 +1,9 @@
 const client = new Appwrite.Client()
-  .setEndpoint('https://fra.cloud.appwrite.io/v1')
-  .setProject('680b9ce400285c7afee2');
+  .setEndpoint(CONFIG.APPWRITE.ENDPOINT)
+  .setProject(CONFIG.APPWRITE.PROJECT_ID);
 
 const databases = new Appwrite.Databases(client);
 const storage = new Appwrite.Storage(client);
-
-const DATABASE_ID = '680fd941002cc495f230';
-const CONSULTATION_COLLECTION_ID = '6829e0db003155d14f5c';
-const ANCESTRY_COLLECTION_ID = '6829de76000aa801cd48';
-const CLAIMS_COLLECTION_ID = '680fd965000bdd163ea9';
-const DOCUMENTS_COLLECTION_ID = '680fd979003271a580d4';
-const CLAIM_DOCUMENTS_BUCKET_ID = '680fef23003d57bdc9b7';
 
 // Dropdown toggles
 function toggleDropdown(buttonId, dropdownId) {
@@ -44,9 +37,9 @@ gcForm.addEventListener('submit', (e) => {
   }
   const formData = {
     service: 'General Consultation',
-    name,
-    email,
-    contact,
+    name: SecurityManager.sanitizeInput(name),
+    email: SecurityManager.sanitizeInput(email),
+    contact: SecurityManager.sanitizeInput(contact),
     amount: 800,
     itemName: 'General Consultation'
   };
@@ -70,10 +63,10 @@ amForm.addEventListener('submit', (e) => {
   const amount = 699 * surnames.length;
   const formData = {
     service: 'Ancestry Mapping',
-    name,
-    email,
-    contact,
-    surnames,
+    name: SecurityManager.sanitizeInput(name),
+    email: SecurityManager.sanitizeInput(email),
+    contact: SecurityManager.sanitizeInput(contact),
+    surnames: surnames.map(surname => SecurityManager.sanitizeInput(surname)),
     amount,
     itemName: `Ancestry Mapping (${surnames.length} surname${surnames.length > 1 ? 's' : ''})`
   };

@@ -1,22 +1,13 @@
 
 (() => {
-  // Initialize Appwrite client
+  // Initialize Appwrite client with configuration
   const client = new Appwrite.Client()
-    .setEndpoint('https://fra.cloud.appwrite.io/v1')
-    .setProject('680b9ce400285c7afee2');
+    .setEndpoint(CONFIG.APPWRITE.ENDPOINT)
+    .setProject(CONFIG.APPWRITE.PROJECT_ID);
 
   const account = new Appwrite.Account(client);
   const databases = new Appwrite.Databases(client);
   const functions = new Appwrite.Functions(client); 
-
-  // Database and collection IDs
-  const DATABASE_ID = '680fd941002cc495f230';
-  const COLLECTION_ID = '680fd965000bdd163ea9';
-  const CONSULTATIONS_COLLECTION_ID = '6829e0db003155d14f5c';
-  const ANCESTRY_COLLECTION_ID = '6829de76000aa801cd48';
-  const READING_MATERIAL_COLLECTION_ID = '6877c04200294b3653e8'; 
-  const ASSIGNMENTS_COLLECTION_ID = '6877c17a0025600adf6d'; 
-  const CLAIM_DOCUMENTS_BUCKET_ID = '680fef23003d57bdc9b7'; 
 
   // Elements
   const totalClaimsEl = document.getElementById("total-claims");
@@ -69,13 +60,26 @@
   async function initialize() {
     try {
       const user = await account.get();
-      // Only allow these emails
-      const allowedEmails = ["kcs888gp@gmail.com", "dloziville.africa@gmail.com"];
-      if (!allowedEmails.includes(user.email)) {
+      
+      // Enhanced admin validation using security manager
+      if (!SecurityManager.isAdmin(user.email)) {
+        console.error("Unauthorized access attempt:", user.email);
         alert("You do not have permission to access this page.");
         window.location.href = "login.html";
         return;
       }
+      
+      // Check for secure session
+      const sessionId = sessionStorage.getItem('sessionId');
+      if (sessionId) {
+        const session = securityManager.getSession(sessionId);
+        if (!session || !session.userData.isAdmin) {
+          console.error("Invalid admin session");
+          window.location.href = "login.html";
+          return;
+        }
+      }
+      
       await loadEntries();
       filterEntries("");
       renderTable();
@@ -92,7 +96,7 @@
 
   async function loadEntries() {
     try {
-      const response = await databases.listDocuments(DATABASE_ID, COLLECTION_ID);
+      const response = await databases.listDocuments(CONFIG.APPWRITE.DATABASE_ID, CONFIG.APPWRITE.COLLECTIONS.CLAIMS);
       entries = response.documents;
     } catch (error) {
       console.error("Failed to load claims:", error);

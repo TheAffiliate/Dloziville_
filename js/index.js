@@ -1,9 +1,21 @@
 
 document.addEventListener('DOMContentLoaded', function() {
   const client = new Appwrite.Client()
-    .setEndpoint('https://fra.cloud.appwrite.io/v1')
-    .setProject('680b9ce400285c7afee2');
+    .setEndpoint(CONFIG.APPWRITE.ENDPOINT)
+    .setProject(CONFIG.APPWRITE.PROJECT_ID);
   const account = new Appwrite.Account(client);
+
+  // Check for secure session
+  const sessionId = sessionStorage.getItem('sessionId');
+  let currentSession = null;
+  
+  if (sessionId) {
+    currentSession = securityManager.getSession(sessionId);
+    if (!currentSession) {
+      // Session expired, clear storage
+      sessionStorage.removeItem('sessionId');
+    }
+  }
 
   // Show logged-in content if user is authenticated
   account.get().then(() => {
@@ -28,17 +40,24 @@ document.addEventListener('DOMContentLoaded', function() {
   document.getElementById('footer-logout-btn').addEventListener('click', async () => {
     try {
       await account.deleteSession('current');
+      
+      // Clear secure session
+      const sessionId = sessionStorage.getItem('sessionId');
+      if (sessionId) {
+        securityManager.destroySession(sessionId);
+        sessionStorage.removeItem('sessionId');
+      }
+      
       window.location.reload();
     } catch (error) {
-      alert('Logout failed.');
+      console.error('Logout failed:', error);
+      // Force reload even if Appwrite logout fails
+      window.location.reload();
     }
   });
 
   const databases = new Appwrite.Databases(client);
   const storage = new Appwrite.Storage(client);
-  const DATABASE_ID = '680fd941002cc495f230';
-  const ASSIGNMENTS_COLLECTION_ID = '6877c17a0025600adf6d';
-  const CLAIM_DOCUMENTS_BUCKET_ID = '680fef23003d57bdc9b7';
 
   document.getElementById('upload-assignment-form')?.addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -47,10 +66,19 @@ document.addEventListener('DOMContentLoaded', function() {
     if (!title || fileInput.files.length === 0) return;
 
     try {
-      // 1. Upload file to Appwrite Storage
+      // 1. Validate file upload
       const file = fileInput.files[0];
+      
+      try {
+        SecurityManager.validateFileUpload(file);
+      } catch (error) {
+        alert(error.message);
+        return;
+      }
+      
+      // 2. Upload file to Appwrite Storage
       const uploadResponse = await storage.createFile(
-        CLAIM_DOCUMENTS_BUCKET_ID,
+        CONFIG.APPWRITE.STORAGE.CLAIM_DOCUMENTS,
         Appwrite.ID.unique(),
         file
       );
@@ -67,13 +95,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
       // 3. Create a document in the Assignments collection
       await databases.createDocument(
-        DATABASE_ID,
-        ASSIGNMENTS_COLLECTION_ID,
+        CONFIG.APPWRITE.DATABASE_ID,
+        CONFIG.APPWRITE.COLLECTIONS.ASSIGNMENTS,
         Appwrite.ID.unique(),
         {
-          title: title,
+          title: SecurityManager.sanitizeInput(title),
           fileUrl: fileId,
-          submitted_by: submittedBy,
+          submitted_by: SecurityManager.sanitizeInput(submittedBy),
           submitted_at: new Date().toISOString()
         }
       );
@@ -87,12 +115,11 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 
-  const READING_MATERIAL_COLLECTION_ID = '6877c04200294b3653e8';
   async function loadReadingMaterials() {
     console.log('Loading reading materials...');
     const readingList = document.getElementById('reading-list');
     try {
-      const res = await databases.listDocuments(DATABASE_ID, READING_MATERIAL_COLLECTION_ID);
+      const res = await databases.listDocuments(CONFIG.APPWRITE.DATABASE_ID, CONFIG.APPWRITE.COLLECTIONS.READING_MATERIAL);
       console.log('Fetched documents:', res.documents);
       if (!res.documents.length) {
         readingList.innerHTML = `<p class="italic text-gray-400">No reading materials available.</p>`;
@@ -102,7 +129,7 @@ document.addEventListener('DOMContentLoaded', function() {
       for (const doc of res.documents) {
         const fileId = doc.fileUrl;
         // Generate a download URL for the file
-        const fileUrl = storage.getFileDownload(CLAIM_DOCUMENTS_BUCKET_ID, fileId).href;
+        const fileUrl = storage.getFileDownload(CONFIG.APPWRITE.STORAGE.CLAIM_DOCUMENTS, fileId).href;
         const div = document.createElement('div');
         div.className = 'bg-gray-700 rounded-md p-3 flex justify-between items-center';
         div.innerHTML = `
