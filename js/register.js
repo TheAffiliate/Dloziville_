@@ -1,6 +1,7 @@
+// Initialize Appwrite client with configuration
 const client = new Appwrite.Client()
-  .setEndpoint('https://fra.cloud.appwrite.io/v1')
-  .setProject('680b9ce400285c7afee2');
+  .setEndpoint(CONFIG.APPWRITE.ENDPOINT)
+  .setProject(CONFIG.APPWRITE.PROJECT_ID);
 
 const account = new Appwrite.Account(client);
 const databases = new Appwrite.Databases(client);
@@ -9,8 +10,8 @@ const databases = new Appwrite.Databases(client);
 account.get()
   .then(async (user) => {
     const profileList = await databases.listDocuments(
-      '680fd941002cc495f230',
-      '682a4296002b063adac9',
+      CONFIG.APPWRITE.DATABASE_ID,
+      CONFIG.APPWRITE.COLLECTIONS.USER_PROFILES,
       [Appwrite.Query.equal('userId', user.$id)]
     );
     const userProfile = profileList.documents[0];
@@ -22,15 +23,16 @@ account.get()
   })
   .catch(() => {});
 
+// Enhanced email validation using security manager
 function validateEmail(email) {
-  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.toLowerCase());
+  return SecurityManager.validateEmail(email);
 }
 
 document.getElementById('register-form').addEventListener('submit', async (e) => {
   e.preventDefault();
 
-  const name = document.getElementById('name').value.trim();
-  const email = document.getElementById('email').value.trim().toLowerCase();
+  const name = SecurityManager.sanitizeInput(document.getElementById('name').value.trim());
+  const email = SecurityManager.sanitizeInput(document.getElementById('email').value.trim().toLowerCase());
   const password = document.getElementById('password').value;
   const passwordConfirm = document.getElementById('password-confirm').value;
 
@@ -47,8 +49,9 @@ document.getElementById('register-form').addEventListener('submit', async (e) =>
     document.getElementById('email-error').classList.remove('hidden');
     hasError = true;
   }
-  if (password.length < 6) {
+  if (!SecurityManager.validatePassword(password)) {
     document.getElementById('password-error').classList.remove('hidden');
+    document.getElementById('password-error').textContent = 'Password must be at least 8 characters with uppercase, lowercase, and number.';
     hasError = true;
   }
   if (password !== passwordConfirm) {
@@ -67,14 +70,16 @@ document.getElementById('register-form').addEventListener('submit', async (e) =>
 
     // Create user profile
     await databases.createDocument(
-      '680fd941002cc495f230',
-      '682a4296002b063adac9',
+      CONFIG.APPWRITE.DATABASE_ID,
+      CONFIG.APPWRITE.COLLECTIONS.USER_PROFILES,
       Appwrite.ID.unique(),
       {
         userId: user.$id,
         fullName: name,
         email: email,
-        role: 'user'
+        role: 'user',
+        createdAt: new Date().toISOString(),
+        lastLogin: new Date().toISOString()
       },
       [
         Appwrite.Permission.read(Appwrite.Role.user(user.$id)),
@@ -85,8 +90,8 @@ document.getElementById('register-form').addEventListener('submit', async (e) =>
 
     // Check role and redirect accordingly
     const profileList = await databases.listDocuments(
-      '680fd941002cc495f230',
-      '682a4296002b063adac9',
+      CONFIG.APPWRITE.DATABASE_ID,
+      CONFIG.APPWRITE.COLLECTIONS.USER_PROFILES,
       [Appwrite.Query.equal('userId', user.$id)]
     );
 
