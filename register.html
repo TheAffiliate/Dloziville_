@@ -78,23 +78,50 @@
     <main class="flex-grow flex items-center justify-center px-6 py-12">
       <div class="w-full max-w-md bg-gray-800 rounded-lg shadow-lg p-8 transition-colors duration-500">
         <h2 class="text-3xl font-bold primary-color mb-6 text-center">Create your account</h2>
+        <p class="text-center text-gray-400 mb-6 text-sm">Fields marked with * are required</p>
         <form id="register-form" class="space-y-6" novalidate>
           <div>
-            <label for="name" class="block text-sm font-medium text-gray-300 mb-1">Full Name</label>
+            <label for="name" class="block text-sm font-medium text-gray-300 mb-1">Full Name *</label>
             <input
               type="text"
               id="name"
               name="name"
               required
-              autocomplete="name"
+              autocomplete="given-name"
               class="w-full rounded-md border border-gray-600 px-3 py-2 text-gray-200 bg-gray-700 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary-color focus:border-primary-color transition"
-              placeholder="John Doe"
+              placeholder="John"
               minlength="2"
             />
-            <p id="name-error" class="mt-1 text-xs text-red-500 hidden">Please enter your full name (at least 2 characters).</p>
+            <p id="name-error" class="mt-1 text-xs text-red-500 hidden">Please enter your first name (at least 2 characters).</p>
           </div>
           <div>
-            <label for="email" class="block text-sm font-medium text-gray-300 mb-1">Email address</label>
+            <label for="lastname" class="block text-sm font-medium text-gray-300 mb-1">Last Name *</label>
+            <input
+              type="text"
+              id="lastname"
+              name="lastname"
+              required
+              autocomplete="family-name"
+              class="w-full rounded-md border border-gray-600 px-3 py-2 text-gray-200 bg-gray-700 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary-color focus:border-primary-color transition"
+              placeholder="Doe"
+              minlength="2"
+            />
+            <p id="lastname-error" class="mt-1 text-xs text-red-500 hidden">Please enter your last name (at least 2 characters).</p>
+          </div>
+          <div>
+            <label for="dob" class="block text-sm font-medium text-gray-300 mb-1">Date of Birth (DD/MM/YYYY) *</label>
+            <input
+              type="date"
+              id="dob"
+              name="dob"
+              required
+              autocomplete="bday"
+              class="w-full rounded-md border border-gray-600 px-3 py-2 text-gray-200 bg-gray-700 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary-color focus:border-primary-color transition"
+            />
+            <p id="dob-error" class="mt-1 text-xs text-red-500 hidden">Please enter a valid date of birth.</p>
+          </div>
+          <div>
+            <label for="email" class="block text-sm font-medium text-gray-300 mb-1">Email Address *</label>
             <input
               type="email"
               id="email"
@@ -107,7 +134,49 @@
             <p id="email-error" class="mt-1 text-xs text-red-500 hidden">Please enter a valid email address.</p>
           </div>
           <div>
-            <label for="password" class="block text-sm font-medium text-gray-300 mb-1">Password</label>
+            <label for="mobile" class="block text-sm font-medium text-gray-300 mb-1">Mobile Number (for WhatsApp Communication) *</label>
+            <input
+              type="tel"
+              id="mobile"
+              name="mobile"
+              required
+              autocomplete="tel"
+              class="w-full rounded-md border border-gray-600 px-3 py-2 text-gray-200 bg-gray-700 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary-color focus:border-primary-color transition"
+              placeholder="+27 xx xxx xxxx"
+            />
+            <p id="mobile-error" class="mt-1 text-xs text-red-500 hidden">Please enter a valid mobile number.</p>
+          </div>
+          <div>
+            <label for="country" class="block text-sm font-medium text-gray-300 mb-1">Country of Residence *</label>
+            <select
+              id="country"
+              name="country"
+              required
+              autocomplete="country"
+              class="w-full rounded-md border border-gray-600 px-3 py-2 text-gray-200 bg-gray-700 focus:outline-none focus:ring-2 focus:ring-primary-color focus:border-primary-color transition"
+            >
+              <option value="">Select your country</option>
+              <option value="ZA">South Africa</option>
+              <option value="BW">Botswana</option>
+              <option value="LS">Lesotho</option>
+              <option value="SZ">Eswatini</option>
+              <option value="ZW">Zimbabwe</option>
+              <option value="MZ">Mozambique</option>
+              <option value="NA">Namibia</option>
+              <option value="US">United States</option>
+              <option value="GB">United Kingdom</option>
+              <option value="CA">Canada</option>
+              <option value="AU">Australia</option>
+              <option value="DE">Germany</option>
+              <option value="FR">France</option>
+              <option value="NL">Netherlands</option>
+              <option value="BE">Belgium</option>
+              <option value="OTHER">Other</option>
+            </select>
+            <p id="country-error" class="mt-1 text-xs text-red-500 hidden">Please select your country of residence.</p>
+          </div>
+          <div>
+            <label for="password" class="block text-sm font-medium text-gray-300 mb-1">Password *</label>
             <input
               type="password"
               id="password"
@@ -121,7 +190,7 @@
             <p id="password-error" class="mt-1 text-xs text-red-500 hidden">Password must be at least 6 characters.</p>
           </div>
           <div>
-            <label for="password-confirm" class="block text-sm font-medium text-gray-300 mb-1">Confirm Password</label>
+            <label for="password-confirm" class="block text-sm font-medium text-gray-300 mb-1">Confirm Password *</label>
             <input
               type="password"
               id="password-confirm"
@@ -134,11 +203,25 @@
             />
             <p id="password-confirm-error" class="mt-1 text-xs text-red-500 hidden">Passwords do not match.</p>
           </div>
+          <div class="flex items-start space-x-3">
+            <input
+              type="checkbox"
+              id="terms"
+              name="terms"
+              required
+              class="mt-1 h-4 w-4 text-primary-color focus:ring-primary-color border-gray-600 rounded bg-gray-700"
+            />
+            <label for="terms" class="text-sm text-gray-300">
+              By clicking REGISTER you agree to all terms and conditions of Dloziville Academy as outlined 
+              <a href="#" class="text-primary-color hover:underline">here</a>. *
+            </label>
+          </div>
+          <p id="terms-error" class="mt-1 text-xs text-red-500 hidden">You must agree to the terms and conditions.</p>
           <button
             type="submit"
             class="btn-primary w-full py-3 rounded-md text-lg font-semibold shadow hover:shadow-md transition focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-primary-color"
           >
-            Register
+            REGISTER
           </button>
           <p class="text-center text-gray-400 text-sm mt-4">
             Already have an account?
